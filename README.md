@@ -1,4 +1,4 @@
-# fall2018_excersizeapp  
+# fall2018_exerciseapp  
 First page
 
  1. Reminder to exercise
