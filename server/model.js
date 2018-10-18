@@ -1,15 +1,23 @@
 
 class User {
      users = [];
+     
+    constructor(){
+       // single_user = {"name": "", age: null, weight: null};
+       // users.push(single_user);
+    }
 
-    constructor(name, age, weight ){
-        single_user = {"name": name, age: age, weight: weight};
+    createUser(name, age, weight ){
+        single_user = {"name": name, age: age, weight: weight, friends:[], friendsallowed: false};
         users.push(single_user);
+
+        return true;
     }
 
     getAllUsers(){
         return users;
     }
+
     setName(index, newName){
         user[index].name = newName;
     }
@@ -20,11 +28,11 @@ class User {
         user[index].weight = newWeight;
     }
 
-    getAge(index, newAge){
+    getAge(index){
         return user[index].age;
     }
 
-    getWeight(index, newWeight){
+    getWeight(index){
         return user[index].weight;
     }
 
@@ -37,12 +45,22 @@ class User {
             }
         });
 
-        return "User not found";
+        return null;
     }
+}
+
+class ExerciseData {
+    constructor(){
+
+    }
+
+    //create new excersize type
+    //add to excersize, time spent excersizing
+    //
 }
 
 
 module.exports = { 
-    User
+    User, ExcerciseData
 }
 //how my data will be structured / request data from
