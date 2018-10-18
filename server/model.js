@@ -1,10 +1,11 @@
 
 class User {
-     users = [];
+     
      
     constructor(){
        // single_user = {"name": "", age: null, weight: null};
        // users.push(single_user);
+       this.users = [];
     }
 
     createUser(name, age, weight ){
@@ -61,6 +62,6 @@ class ExerciseData {
 
 
 module.exports = { 
-    User, ExcerciseData
+    User, ExerciseData
 }
 //how my data will be structured / request data from

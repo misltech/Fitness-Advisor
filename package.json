@@ -1,0 +1,24 @@
+{
+  "name": "fall2018_exerciseapp",
+  "version": "1.0.0",
+  "description": "First page",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/misltech/fall2018_excersizeapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/misltech/fall2018_excersizeapp/issues"
+  },
+  "homepage": "https://github.com/misltech/fall2018_excersizeapp#readme"
+}

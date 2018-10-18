@@ -1,7 +1,7 @@
 const express = require('express');
-const { Users} = require('./model');
+const { User} = require('./model');
 
-var users = new Users();
+var users = new User();
 
 const app = express.Router();
 
@@ -43,6 +43,7 @@ app.get('/getuser', function(req, res) {
     }
 
 });
+module.exports = app;
 
 
 

@@ -1,5 +1,5 @@
 const express = require('express');
-const game = require('./server/controller');
+const u = require('./controller');
 
 const app = express();
 
@@ -9,7 +9,7 @@ const server = "localhost";
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use("/", express.static(__dirname + "/../client/"));
-//app.use('/game', game);
+app.use('/u', u);
 
 app.listen(port);
 
