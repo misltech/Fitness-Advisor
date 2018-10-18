@@ -8,7 +8,7 @@ class User {
     }
 
     createUser(name, age, weight ){
-        single_user = {"name": name, age: age, weight: weight, friends:[], friendsallowed: false};
+        single_user = {"name": name, age: age, weight: weight, friends:[], friendsallowed: false, ExerciseData:[]};
         users.push(single_user);
 
         return true;
