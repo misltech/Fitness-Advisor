@@ -12,30 +12,35 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
-    },
-    {
-      path: '/exercise',
-      name: 'Exercise',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    },
-    {
-      path: '/health',
-      name: 'Health',
-      component: () => import(/* webpackChunkName: "game" */ './views/Game.vue')
-    },
-    {
-        path: '/friends',
-        name: 'Friends',
-        component: () => import(/* webpackChunkName: "game" */ './views/Friends.vue')
-    },
-    {
-        path: '/profile',
-        name: 'Profile',
-        component: () => import(/* webpackChunkName: "game" */ './views/Profile.vue')
-      },
+    }
+    // },
+    // {
+    //   path: '/exercise',
+    //   name: 'Exercise',
+    //   // route level code-splitting
+    //   // this generates a separate chunk (about.[hash].js) for this route
+    //   // which is lazy-loaded when the route is visited.
+    //   // component: () => import('./views/Exercise.vue')
+    //   component: Exercise
+    // },
+    // {
+    //   path: '/health',
+    //   name: 'Health',
+    //   // component: () => import('./views/HealthyFoods.vue')
+    //   component: HealthyFoods
+    // },
+    // {
+    //     path: '/friends',
+    //     name: 'Friends',
+    //     // component: () => import('./views/Friends.vue')
+    //     component: Friends
+    // },
+    // {
+    //     path: '/profile',
+    //     name: 'Profile',
+    //     // component: () => import('./views/Profile.vue')
+    //     component: Profile
+    //   },
 
 
   ]

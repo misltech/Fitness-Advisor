@@ -5,11 +5,12 @@
                 <router-link class="nav-link" exact-active-class="active" to="/">Home</router-link>
             </li>
             <li class="nav-item">
-                <router-link class="nav-link" exact-active-class="active" to="/about">Exercise</router-link>
+                <router-link class="nav-link" exact-active-class="active" to="/excercise">Exercise</router-link>
             </li>
             <li class="nav-item">
-                <router-link class="nav-link" exact-active-class="active" to="/play">Nutrition</router-link>
+                <router-link class="nav-link" exact-active-class="active" to="/nutrition">Nutrition</router-link>
             </li>
+            
         </ul>
     </nav>
 </template>

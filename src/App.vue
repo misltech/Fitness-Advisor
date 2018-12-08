@@ -9,16 +9,14 @@
   </div>
 </template>
 
-<style lang="scss">
-@import "../node_modules/bootstrap/scss/bootstrap.scss";
+<style lang="css">
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
 #logo { height: 50px;}
 </style>
 
 <script>
-// @ is an alias to /src
 import Nav from '@/components/Navigation.vue'
-//import '@/services/facebook';
-
+import '@/services/facebook';
 export default {
   name: 'home',
   components: {
