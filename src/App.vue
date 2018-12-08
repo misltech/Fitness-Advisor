@@ -15,8 +15,9 @@
 </style>
 
 <script>
-import Nav from '@/components/Navigation.vue'
+import Nav from '@/components/Navigation.vue';
 import '@/services/facebook';
+import "../node_modules/bootstrap/dist/js/bootstrap.js";
 export default {
   name: 'home',
   components: {

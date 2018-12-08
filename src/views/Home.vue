@@ -28,7 +28,7 @@ import * as fb from "@/services/facebook";
 
 export default {
   methods: {
-    getScope() {
+    scope: function(event) {
       return fb.getScopes();
     }
   }
