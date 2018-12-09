@@ -8,60 +8,57 @@ class User {
        this.users = [];
     }
 
-    createUser(name, age, weight ){
-        single_user = {"name": name, age: age, weight: weight, friends:[], friendsallowed: false, ExerciseData:[]};
-        users.push(single_user);
+    createUser(name, age, location, userID, accesstoken){
+        if(this.findUser(userID) == null){
+        
+        let single_user = {"name": name, "age": age,"location": location, "userID": userID, "accesstoken": accesstoken, "friends": [{"Name": null, "FacebookID": null}], "ExerciseData": [{"Walking_Distance": null, "Running_Distance": null}]};
+        this.users.push(single_user);
 
         return true;
+        }
+        else{
+            return false;
+        }
     }
 
     getAllUsers(){
-        return users;
+        return this.users;
     }
 
     setName(index, newName){
-        user[index].name = newName;
+        this.user[index].name = newName;
     }
     setAge(index, newAge){
-        user[index].age = newAge;
+        this.user[index].age = newAge;
     }
-    setWeight(index, newWeight){
-        user[index].weight = newWeight;
-    }
-
+    
     getAge(index){
-        return user[index].age;
+        return this.user[index].age;
     }
 
-    getWeight(index){
-        return user[index].weight;
-    }
-
-    findUser(name){
-        //return index
-
-        $.each(users, function(pos, val){
-            if(val.name == name){
+    findUser(userID){
+        $.each(this.users, function(pos, val){
+            if(val.userID == userID){
                 return pos;
             }
         });
-
         return null;
     }
-}
 
-class ExerciseData {
-    constructor(){
-
+    addWalkingDistance(index, data){
+        if((!index == null)){
+            this.user[index].ExerciseData.Walking_Distance += data;
+        }
+    }
+    addRunningDistance(index, data){
+        if((!index == null)){
+            this.user[index].ExerciseData.Running_Distance += data;
+        }  
     }
 
-    //create new excersize type
-    //add to excersize, time spent excersizing
-    //
 }
 
-
 module.exports = { 
-    User, ExerciseData
+    User
 }
 //how my data will be structured / request data from
