@@ -1,5 +1,6 @@
 const apiroot = "http://localhost:3000";
-
+import $ from 'jquery'
+window.$ = $;
 export function login(username, age, location, userID, accesstoken) {
     //username, age, location, userID, accesstoken
     return myFetch(apiroot + `/createUser`, "POST", { "name": username, "location": location, "age": age, "userID": userID, "accesstoken": accesstoken })

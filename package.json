@@ -4,10 +4,10 @@
   "description": "First page",
   "main": "index.js",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4",
     "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "bootstrap": "^4.1.3",
+    "express": "^4.16.4",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.4",
     "vue": "^2.5.17",
@@ -17,7 +17,6 @@
     "@vue/cli-plugin-babel": "^3.0.1",
     "@vue/cli-plugin-eslint": "^3.0.1",
     "@vue/cli-service": "^3.0.1",
-    
     "vue-template-compiler": "^2.5.17"
   },
   "eslintConfig": {
@@ -42,7 +41,6 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
-
   },
   "repository": {
     "type": "git",

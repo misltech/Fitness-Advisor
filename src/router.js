@@ -23,8 +23,8 @@ export default new Router({
       component: Exercise
     },
     {
-      path: '/health',
-      name: 'Health',
+      path: '/nutrition',
+      name: 'nutrition',
       component: HealthyFoods
     },
     {

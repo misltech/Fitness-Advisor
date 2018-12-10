@@ -3,14 +3,11 @@ class User {
      
      
     constructor(){
-       // single_user = {"name": "", age: null, weight: null};
-       // users.push(single_user);
        this.users = [];
     }
 
     createUser(name, age, location, userID, accesstoken){
         if(this.findUser(userID) == null){
-        
         let single_user = {"name": name, "age": age,"location": location, "userID": userID, "accesstoken": accesstoken, "friends": [{"Name": null, "FacebookID": null}], "ExerciseData": [{"Walking_Distance": null, "Running_Distance": null}]};
         this.users.push(single_user);
 
@@ -55,7 +52,6 @@ class User {
             this.user[index].ExerciseData.Running_Distance += data;
         }  
     }
-
 }
 
 module.exports = { 

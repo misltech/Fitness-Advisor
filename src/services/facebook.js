@@ -52,10 +52,10 @@ function statusChangeCallback(response) {
     //username, age, location, userID, accesstoken
     FB.api('/me', function(res) {
       console.log( res.name);
-      currentUser = res;
-      storage.login(res.name, null, null, res.authResponse.userID, res.authResponse.accessToken)
+      //currentUser = res;
+      storage.login(res.name, null, null, response.authResponse.userID, response.authResponse.accessToken)
     });
-
+//authResponse.userID
   } else {
     // The person is not logged into your app or we are unable to tell.
     //document.getElementById('status').innerHTML = 'Please log ' +
@@ -79,7 +79,26 @@ export function getStatus(){
     return false;
     }
   });
-
-
 }
+
+export function getLocation(){
+  FB.api('/me', {fields: 'location'}, function(response) {
+    return response.location;
+  });
+}
+
+export function getAge(){
+FB.api('/me', {fields: 'age_range'}, function(response) {
+  console.log(response);
+  return response;
+});
+}
+
+export function getProfilePicture(){
+  FB.api('/me', {fields: 'profile_pic'}, function(response) {
+    console.log(response);
+    return response;
+  });
+}
+
 

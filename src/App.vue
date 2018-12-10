@@ -9,12 +9,17 @@
   </div>
 </template>
 
+
 <style lang="css">
 @import "../node_modules/bootstrap/dist/css/bootstrap.css";
 #logo { height: 50px;}
 </style>
 
 <script>
+// global.jQuery = require('jquery');
+// var $ = global.jQuery;
+// widows.$ = $;
+
 import Nav from '@/components/Navigation.vue';
 import '@/services/facebook';
 import "../node_modules/bootstrap/dist/js/bootstrap.js";

@@ -5,7 +5,7 @@
         <router-link class="nav-link" exact-active-class="active" to="/">Home</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" exact-active-class="active" to="/excercise">Exercise</router-link>
+        <router-link class="nav-link" exact-active-class="active" to="/exercise">Exercise</router-link>
       </li>
       <li class="nav-item">
         <router-link class="nav-link" exact-active-class="active" to="/nutrition">Nutrition</router-link>
@@ -15,7 +15,7 @@
         <div class="dropdown-menu">
           <router-link class="dropdown-item"  to="/profile">My Profile</router-link>
           <router-link class="dropdown-item"  to="/friends">My Friends</router-link>
-          <router-link class="dropdown-item"  to="/friends">Sign out</router-link>     
+          <a class="dropdown-item" v-on:click="logOut">Sign out</a>     
         </div>
       </li>
     </ul>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import * as api from '@/services/storage';
+//import * as api from '@/services/storage';
 import * as fb from '@/services/facebook';
 import * as route from  '@/router';
 
