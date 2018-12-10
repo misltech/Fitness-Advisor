@@ -1,25 +1,23 @@
 <template>
   <div class="home">
     <div class="jumbotron">
-
-      <h3 class="">Daily Exercise Checkin!</h3>
+      <h3 class>Daily Exercise Checkin!</h3>
       <hr class="my-4">
-    <form class="form-horizontal">
+      <form class="form-horizontal">
         <!-- Form Name -->
-
         <!-- Multiple Radios -->
         <div class="form-group">
           <label class="col-md-4 control-label" for="radios">Type of Exercise</label>
           <div class="col-md-4">
             <div class="radio">
               <label for="radios-0">
-                <input type="radio" name="radios" id="radios-0" value="Running" checked="checked">
+                <input v-model="typeofExercise" type="radio" id="radios-0" value="Running" checked="checked">
                 Running
               </label>
             </div>
             <div class="radio">
               <label for="radios-1">
-                <input type="radio" name="radios" id="radios-1" value="Walking"> Walking
+                <input v-model="typeofExercise" type="radio" id="radios-1" value="Walking"> Walking
               </label>
             </div>
           </div>
@@ -33,7 +31,7 @@
               id="textinput"
               name="textinput"
               type="text"
-              placeholder="13miles"
+              placeholder="13 miles"
               class="form-control input-md"
             >
           </div>
@@ -43,14 +41,34 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="singlebutton"></label>
           <div class="col-md-4">
-            <button id="singlebutton" name="singlebutton" class="btn btn-success">submit</button>
+            <button  @click.prevent="sendExercise" id="singlebutton" name="singlebutton" class="btn btn-success">submit</button>
           </div>
         </div>
-    </form>
-  </div>
+      </form>
     </div>
+  </div>
 </template>
 
 <script>
+import * as storage from "@/services/storage";
 
+export default {
+  data() {
+    return {
+      distance: 0,
+      typeofExercise: ""
+    };
+  },
+  methods: {
+    sendExercise: function(){
+      if(this.typeofExercise == "Walking"){
+        storage.addWalking(storage.accesstoken, this.distance);
+      }
+      else if(this.typeofExercise == "Running"){
+        storage.addRunning(storage.accesstoken, this.distance);
+      }
+    }
+
+  }
+};
 </script>

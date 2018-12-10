@@ -34,11 +34,11 @@ class User {
     }
 
     findUser(userID){
-        $.each(this.users, function(pos, val){
-            if(val.userID == userID){
-                return pos;
+        for(let u = 0; u < this.users.length; u++){
+            if(user[u].userID = userID){
+                return u;
             }
-        });
+        }
         return null;
     }
 
@@ -62,16 +62,13 @@ class User {
     }
     
     removeFriend(index, friend){
-        $.each(this.users.friends, function(pos, val){
-            if(val.FacebookID == friend){
-                if((!index == null)){
-                    this.user[index].friends.splice(pos, 1);
-                    return true;
-                }  
+        for(let i = 0; i < this.users[index].friends.length; i++){
+            if(this.users[index].friends[i].FacebookID == friend){
+                this.user[index].friends.splice(i, 1);
+                return true;
             }
-        });
+        }
         return false;
-        
     }
 }
 

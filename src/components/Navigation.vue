@@ -10,8 +10,8 @@
       <li class="nav-item">
         <router-link class="nav-link" exact-active-class="active" to="/nutrition">Nutrition</router-link>
       </li>
-      <li  class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hi, {{this.name}}</a>
+      <li v-show="loginStatus()" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hi, {{name}}</a>
         <div class="dropdown-menu">
           <router-link class="dropdown-item"  to="/profile">My Profile</router-link>
           <router-link class="dropdown-item"  to="/friends">My Friends</router-link>
@@ -34,25 +34,34 @@ export default {
       name: ""
     }
   },
-  created(){
-    this.getName();
-  },
+
   methods: {
     loginStatus: function(){
-        if(fb.getStatus()){
+      fb.getStatus().then(function(resolve, reject){
+        console.log("this is success " + resolve);
+        console.log("this is reject " + reject);
+        alert(resolve);
+
+        if(resolve == true){
           return true;
         }
-        else{
+        else if(reject == true){
           return false;
         }
+      })
     },
     logOut: function(){
-      fb.logmeout();
-      this.$router.push('/');
+      fb.logmeout().then(this.$router.push('/'));
     },
     getName: function(){
-      this.name = fb.getName();
-      this.name = "Tahir";
+      // eslint-disable-next-line
+      fb.getName().then(function(res, rej){
+        if(!res == null){
+          this.name = res;
+          //this.name = "Tahir";
+        }
+      })
+      
     }
 
     } 

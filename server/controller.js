@@ -28,7 +28,7 @@ app.get('/getuser', function(req, res) {
     var userID = req.get('userID');
     var accesstoken = req.get('accesstoken');
     //name, age, location, userID, accesstoken
-    //console.log(username, age, location, userID, accesstoken);
+    console.log(username, age, location, userID, accesstoken);
     if(users.createUser(username, age, location, userID, accesstoken)){
         res.send(true);
     }

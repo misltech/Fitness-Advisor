@@ -1,43 +1,32 @@
 import * as storage from '@/services/storage';
-//var FB = null;
 
-window.fbAsyncInit = function() {
+window.fbAsyncInit = function () {
   FB.init({
-    appId      : '191023585134452',
-    cookie     : true,
-    xfbml      : true,
-    version    : 'v3.0'
+    appId: '191023585134452',
+    cookie: true,
+    xfbml: true,
+    version: 'v3.0'
   });
-  FB.AppEvents.logPageView(); 
-  
-  FB.getLoginStatus(function(response) {
+  FB.AppEvents.logPageView();
+
+  FB.getLoginStatus(function (response) {
     statusChangeCallback(response);
   });
 };
 
-(function(d, s, id){
-   var js, fjs = d.getElementsByTagName(s)[0];
-   if (d.getElementById(id)) {return;}
-   js = d.createElement(s); js.id = id;
-   js.src = "https://connect.facebook.net/en_US/sdk.js";
-   fjs.parentNode.insertBefore(js, fjs);
- }(document, 'script', 'facebook-jssdk'));
+(function (d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) { return; }
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 
- export function FBLogin(){
-  FB.login(function(response) {
+export function FBLogin() {
+  FB.login(function (response) {
     statusChangeCallback(response);
-  }, {scope: 'email, user_birthday, user_location, public_profile'});
+  }, { scope: 'email, user_birthday, user_location, public_profile' });
 }
-
-// function statusChangeCallback(response){
-//   console.log(response);
-//   FB.api("/me?fields=name,email,birthday,picture", me => {
-//    console.log(me);
-//    storage.Login(me.name, response.authResponse.userID, response.authResponse.accessToken).then(function(s){
-//     console.log(s); 
-//    })
-//   })
-// }
 
 function statusChangeCallback(response) {
   console.log('statusChangeCallback');
@@ -49,62 +38,72 @@ function statusChangeCallback(response) {
   if (response.status === 'connected') {
     // Logged into your app and Facebook.
     //username, age, location, userID, accesstoken
-    FB.api('/me', function(res) {
-      console.log( res.name);
+    FB.api('/me', function (res) {
+      console.log(res.name);
       //currentUser = res;
       storage.login(res.name, null, null, response.authResponse.userID, response.authResponse.accessToken);
       storage.setAccessToken(response.authResponse.accessToken);
 
     });
-//authResponse.userID
+    //authResponse.userID
   } else {
     // The person is not logged into your app or we are unable to tell.
     //document.getElementById('status').innerHTML = 'Please log ' +
-   //do something not sure what yet
+    //do something not sure what yet
   }
 }
-
-export function logmeout(){
-  FB.logout(function(response) {
-    // Person is now logged out
-    console.log(response);
-    currentUser = null;
- });
-}
-
-export function getStatus(){
-  FB.getLoginStatus(function(response) {
-    if (response.status === 'connected') {
-      return true;
-    } else {
-    return false;
-    }
+export function logmeout() {
+  // eslint-disable-next-line
+  return new Promise(function (resolve, reject) {
+    FB.logout(function (response) { 
+      console.log("signed out: " + response);
+      resolve();
+    });
   });
 }
 
-export function getLocation(){
-  FB.api('/me', {fields: 'location'}, function(response) {
+export function getStatus(){
+  return new Promise(function(resolve, reject){
+    FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+        resolve(true);
+      } else {
+        reject(true);
+      }
+    });
+   });
+  }
+
+
+export function getLocation() {
+  FB.api('/me', { fields: 'location' }, function (response) {
     return response.location;
   });
 }
 
-export function getAge(){
-FB.api('/me', {fields: 'age_range'}, function(response) {
-  console.log(response);
-  return response;
-});
-}
-
-export function getProfilePicture(){
-  FB.api('/me', {fields: 'profile_pic'}, function(response) {
+export function getAge() {
+  FB.api('/me', { fields: 'age_range' }, function (response) {
     console.log(response);
     return response;
   });
 }
-export function getName(){
-  FB.api('/me', function(res) {
-    return res.name;
+
+export function getProfilePicture() {
+  FB.api('/me', { fields: 'profile_pic' }, function (response) {
+    console.log(response);
+    return response;
   });
 }
-
+export function getName() {
+  return new Promise(function(resolve, reject){
+    FB.api('/me', function (res) {
+      if(res != null){
+        resolve(res.name);
+      }
+      else{
+        reject(true);
+      } 
+    });
+  })
+}
 
