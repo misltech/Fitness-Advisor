@@ -10,11 +10,7 @@
       <li class="nav-item">
         <router-link class="nav-link" exact-active-class="active" to="/nutrition">Nutrition</router-link>
       </li>
-      
-    </ul>
-    <nav v-if="loginStatus" class="navbar">
-        <ul class="navbar-nav">
-          <li  class="nav-item dropdown">
+      <li  class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hi, {{this.name}}</a>
         <div class="dropdown-menu">
           <router-link class="dropdown-item"  to="/profile">My Profile</router-link>
@@ -22,9 +18,8 @@
           <a class="dropdown-item" v-on:click="logOut">Sign out</a>     
         </div>
       </li>
-        </ul>
-    </nav>
 
+    </ul>
   </nav>
 </template>
 

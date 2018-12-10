@@ -33,9 +33,7 @@
 
         <!-- </fieldset> -->
       </form>
-    </div>
 
-    <div class="jumbotron">
       <div v-for="w in this.foods.hits" :key="w" class="card" style="width: 18rem;">
         <img class="card-img-top" :src="w.recipe.image" alt="Card image cap">
         <div class="card-body">
@@ -45,8 +43,13 @@
           <a href="'${w.recipe.url}'" class="btn btn-primary"></a>
         </div>
       </div>
+
     </div>
-  </div>
+
+    
+      
+    </div>
+
 </template>
 
 

@@ -1,10 +1,11 @@
 <template>
   <div class="home">
     <div class="jumbotron">
+
+      <h3 class="">Daily Exercise Checkin!</h3>
+      <hr class="my-4">
     <form class="form-horizontal">
-      <fieldset>
         <!-- Form Name -->
-        <legend>Daily Exercise Checkin!</legend>
 
         <!-- Multiple Radios -->
         <div class="form-group">
@@ -45,7 +46,6 @@
             <button id="singlebutton" name="singlebutton" class="btn btn-success">submit</button>
           </div>
         </div>
-      </fieldset>
     </form>
   </div>
     </div>

@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-md-6">
             <h3 class="text-center">Add Friends</h3>
-
+            <hr class="my-4">
             <form class="form-horizontal">
               <!-- <fieldset> -->
               <!-- Search input-->
@@ -31,20 +31,19 @@
                     @click.prevent="getResults()"
                     id="singlebutton"
                     name="singlebutton"
-                    class="btn btn-primary"
-                  >submit</button>
+                    class="col-md-12 btn btn-success"
+                  >add</button>
                 </div>
               </div>
-
-              <!-- </fieldset> -->
             </form>
           </div>
           <div class="col-md-6">
             <h3 class="text-center">Your Friends</h3>
+            <hr class="my-4">
             <table class="table">
               <thead>
                 <tr>
-                  <th>Friend Name</th>
+                  <th>Name</th>
                   <th>Relationship</th>
                 </tr>
               </thead>
