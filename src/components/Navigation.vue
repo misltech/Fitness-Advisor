@@ -26,7 +26,7 @@
 <script>
 //import * as api from '@/services/storage';
 import * as fb from '@/services/facebook';
-import * as route from  '@/router';
+//import * as route from  'router';
 
 export default {
   data(){
@@ -48,7 +48,7 @@ export default {
     },
     logOut: function(){
       fb.logmeout();
-      route.go('/');
+      this.$router.push('/');
     },
     getName: function(){
       this.name = fb.getName();
