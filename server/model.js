@@ -60,6 +60,7 @@ class User {
             return true;
         }  
     }
+    
     removeFriend(index, friend){
         $.each(this.users.friends, function(pos, val){
             if(val.FacebookID == friend){

@@ -1,4 +1,6 @@
 const apiroot = "http://localhost:3000";
+export var accesstoken = null;
+
 import $ from 'jquery'
 window.$ = $;
 
@@ -20,33 +22,16 @@ export function addRunning(userID, distance){
 export function addFriend(userID, friendname, friendID){
     return myFetch(apiroot, `/addfriend`, "POST", {"userID": userID, "name": friendname, "friendID": friendID});
 }
+export function getFriends(userID){
+    return myFetch(apiroot, `/getfriends`, "GET", {"userID": userID});
+}
 
-// function myFetch(url = ``, data = null) {
-//     let options = {
-//           cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-//           credentials: "same-origin", // include, same-origin, *omit
-//           headers: {
-//               playerId: playerId
-//           }
-//     };
-//     if(data){
-//         options = { 
-//           ...options,
-//           method:  "POST", // *GET, POST, PUT, DELETE, etc.
-//           headers: {
-//               ...options.headers,
-//               "Content-Type": "application/json; charset=utf-8",
-//               // "Content-Type": "application/x-www-form-urlencoded",
-//           },
-//           body: JSON.stringify(data), // body data type must match "Content-Type" header
-//         };
-//     }
-//     return fetch(url, options)
-//     .then(response =>{
-//       return response.json()
-//     }); // parses response to JSON
-// }
-  
+export function setAccessToken(token){
+    accesstoken = token;
+}
+export function getAccessToken(){
+    return accesstoken;
+}
  function myFetch(url, storagetype, method, data) {
 
     var settings = {

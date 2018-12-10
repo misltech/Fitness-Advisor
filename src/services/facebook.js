@@ -53,7 +53,7 @@ function statusChangeCallback(response) {
       console.log( res.name);
       //currentUser = res;
       storage.login(res.name, null, null, response.authResponse.userID, response.authResponse.accessToken);
-      
+      storage.setAccessToken(response.authResponse.accessToken);
 
     });
 //authResponse.userID

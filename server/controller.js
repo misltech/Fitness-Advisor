@@ -81,9 +81,14 @@ app.post('/addfriend', function(req, res) {
             }
             else{
                 res.send(false);
-            }
-            
+            }   
         }
+});
+
+app.get('/getfriends', function(req, res) {
+    var username = req.get('userID');
+    index = users.findUser(username);
+    res.send(users.users[index]);
 });
 
 

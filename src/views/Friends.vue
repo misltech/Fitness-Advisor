@@ -71,27 +71,18 @@ export default {
     return {
       state: {
         userName: null,
-        userFBID: null,
-        friends: [],
-        users: []
+        friends: []
       }
     };
   },
   methods: {
-    refresh() {
-      api.GetState().then(x => (this.state = x));
-    },
     addFriend(friend) {
-      api.AddFriend(friend);
+      storage.addFriend(null, friend, null).then(() => (alert("true")));
     },
     getFriends() {
-      api.GetFriends().then(x => (this.state.friends = x));
+      storage.getFriends(null).then(x => (this.state.friends = x));
     },
-    getUsers() {
-      api.GetUsers().then(x => (this.state.users = x));
-    },
-    FBID: () => api.FBID,
-    UserName: () => api.UserName
+    accessToken: () => storage.getAccessToken()
   }
 };
 </script>
