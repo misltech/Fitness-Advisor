@@ -1,0 +1,98 @@
+<template>
+  <div class="home">
+    <div class="jumbotron">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <h3 class="text-center">Add Friends</h3>
+
+            <form class="form-horizontal">
+              <!-- <fieldset> -->
+              <!-- Search input-->
+              <div class="form-group">
+                <label class="col-md-6 control-label" for="searchinput">Enter a friend name:</label>
+                <div class="col-md-6">
+                  <input
+                    v-model="criteria"
+                    id="searchinput"
+                    name="searchinput"
+                    type="search"
+                    placeholder="tahir :)"
+                    class="form-control input-md"
+                  >
+                </div>
+              </div>
+
+              <!-- Button -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="singlebutton"></label>
+                <div class="col-md-4">
+                  <button
+                    @click.prevent="getResults()"
+                    id="singlebutton"
+                    name="singlebutton"
+                    class="btn btn-primary"
+                  >submit</button>
+                </div>
+              </div>
+
+              <!-- </fieldset> -->
+            </form>
+          </div>
+          <div class="col-md-6">
+            <h3 class="text-center">Your Friends</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Friend Name</th>
+                  <th>Relationship</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-active">
+                  <td>Myself :)</td>
+                  <td>Friends</td>
+                  <td><button class="btn btn-danger">Remove</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<script>
+import * as storage from "@/services/storage";
+
+export default {
+  data() {
+    return {
+      state: {
+        userName: null,
+        userFBID: null,
+        friends: [],
+        users: []
+      }
+    };
+  },
+  methods: {
+    refresh() {
+      api.GetState().then(x => (this.state = x));
+    },
+    addFriend(friend) {
+      api.AddFriend(friend);
+    },
+    getFriends() {
+      api.GetFriends().then(x => (this.state.friends = x));
+    },
+    getUsers() {
+      api.GetUsers().then(x => (this.state.users = x));
+    },
+    FBID: () => api.FBID,
+    UserName: () => api.UserName
+  }
+};
+</script>

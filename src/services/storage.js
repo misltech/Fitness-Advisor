@@ -1,19 +1,24 @@
 const apiroot = "http://localhost:3000";
 import $ from 'jquery'
 window.$ = $;
+
 export function login(username, age, location, userID, accesstoken) {
     //username, age, location, userID, accesstoken
     return myFetch(apiroot + `/createUser`, "POST", { "name": username, "location": location, "age": age, "userID": userID, "accesstoken": accesstoken })
 }       //url, storagetype, method , data
 export function getUserInfo(userID) {
-    return myFetch(apiroot, `/getuser`, "GET", { userID: userID });
+    return myFetch(apiroot, `/getuser`, "GET", { "userID": userID });
 }
 export function addWalking(userID, distance){
-    return myFetch(apiroot, `/addWalking`, "POST", {userID: userID, walked: distance});
+    return myFetch(apiroot, `/addWalking`, "POST", {"userID": userID, "walked": distance});
 }
 
 export function addRunning(userID, distance){
-    return myFetch(apiroot, `/addRunning`, "POST", {userID: userID, running: distance});
+    return myFetch(apiroot, `/addRunning`, "POST", {"userID": userID, "running": distance});
+}
+
+export function addFriend(userID, friendname, friendID){
+    return myFetch(apiroot, `/addfriend`, "POST", {"userID": userID, "name": friendname, "friendID": friendID});
 }
 
 // function myFetch(url = ``, data = null) {

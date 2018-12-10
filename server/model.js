@@ -52,6 +52,26 @@ class User {
             this.user[index].ExerciseData.Running_Distance += data;
         }  
     }
+
+    addFriend(index, name, facebookid){
+        if((!index == null)){
+            let temp = {"Name": name, "FacebookID": facebookid}
+            this.user[index].friends.push(temp);
+            return true;
+        }  
+    }
+    removeFriend(index, friend){
+        $.each(this.users.friends, function(pos, val){
+            if(val.FacebookID == friend){
+                if((!index == null)){
+                    this.user[index].friends.splice(pos, 1);
+                    return true;
+                }  
+            }
+        });
+        return false;
+        
+    }
 }
 
 module.exports = { 

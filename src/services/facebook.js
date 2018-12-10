@@ -1,5 +1,5 @@
 import * as storage from '@/services/storage';
-var currentUser = null;
+//var FB = null;
 
 window.fbAsyncInit = function() {
   FB.init({
@@ -13,7 +13,6 @@ window.fbAsyncInit = function() {
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
   });
-
 };
 
 (function(d, s, id){
@@ -53,7 +52,9 @@ function statusChangeCallback(response) {
     FB.api('/me', function(res) {
       console.log( res.name);
       //currentUser = res;
-      storage.login(res.name, null, null, response.authResponse.userID, response.authResponse.accessToken)
+      storage.login(res.name, null, null, response.authResponse.userID, response.authResponse.accessToken);
+      
+
     });
 //authResponse.userID
   } else {
@@ -98,6 +99,11 @@ export function getProfilePicture(){
   FB.api('/me', {fields: 'profile_pic'}, function(response) {
     console.log(response);
     return response;
+  });
+}
+export function getName(){
+  FB.api('/me', function(res) {
+    return res.name;
   });
 }
 

@@ -1,0 +1,8 @@
+<template>
+
+<div class="home">
+    <div class="jumbotron">
+    </div>
+</div>
+
+</template>

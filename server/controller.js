@@ -65,6 +65,27 @@ app.post('/addRunning', function(req, res) {
         }
 });
 
+app.post('/addfriend', function(req, res) {
+
+    var username = req.get('userID');
+    var name = req.get('name');
+    var friendID = req.get('friendID');
+
+    index = users.findUser(username);
+        if(index == null){
+            res.send("user cannot be found"); 
+        }
+        else{
+            if(user.addfriend(index, name, friendID)){
+                res.send(true);
+            }
+            else{
+                res.send(false);
+            }
+            
+        }
+});
+
 
 module.exports = app;
 
