@@ -19,11 +19,24 @@ export function addRunning(userID, distance) {
     return myFetch(apiroot + "/addRunning", "POST", { "userID": userID, "running": distance });
 }
 
-export function addFriend(userID, friendname, friendID) {
-    return myFetch(apiroot + "/addfriend", "POST", { "userID": userID, "name": friendname, "friendID": friendID });
+// export function addFriend(userID, friendname, friendID) {
+//     return myFetch(apiroot + "/addfriend", "POST", { "userID": userID, "name": friendname, "friendID": friendID });
+// }
+export function addFriend(userID, friendname) {
+    return myFetch(apiroot + "/addfriend", "POST", { "userID": userID, "name": friendname});
 }
+
 export function getFriends(userID) {
-    return myFetch(apiroot + "/getfriends", "GET", { "userID": userID });
+    return new Promise(function(resolve, reject){
+        if(myFetch(apiroot + "/getfriends", "GET", { "userID": userID })){
+            resolve();
+        }
+        else{
+            reject();
+        }
+    
+    })
+
 }
 
 export function setAccessToken(token) {

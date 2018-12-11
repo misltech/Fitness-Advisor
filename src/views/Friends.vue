@@ -13,7 +13,7 @@
                 <label class="col-md-6 control-label" for="searchinput">Enter a friend name:</label>
                 <div class="col-md-6">
                   <input
-                    v-model="criteria"
+                    v-model="username"
                     id="searchinput"
                     name="searchinput"
                     type="search"
@@ -28,7 +28,7 @@
                 <label class="col-md-4 control-label" for="singlebutton"></label>
                 <div class="col-md-4">
                   <button
-                    @click.prevent="getResults()"
+                    @click.prevent="addFriend"
                     id="singlebutton"
                     name="singlebutton"
                     class="col-md-12 btn btn-success"
@@ -44,14 +44,18 @@
               <thead>
                 <tr>
                   <th>Name</th>
-                  <th>Relationship</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody v-for="f in state.friends" :key="f">
                 <tr class="table-active">
-                  <td>Myself :)</td>
-                  <td>Friends</td>
-                  <td><button class="btn btn-danger">Remove</button></td>
+                  <td>{{f.Name}}</td>
+                  <td>
+                    <button
+                      @click.prevent="removeFriend"
+                      class="btn btn-danger"
+                      v-bind:value="f.Name"
+                    >Remove</button>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -65,6 +69,8 @@
 
 <script>
 import * as storage from "@/services/storage";
+// eslint-disable-next-line 
+let loopTimer = null;
 
 export default {
   data() {
@@ -76,13 +82,31 @@ export default {
     };
   },
   methods: {
-    addFriend(friend) {
-      storage.addFriend(null, friend, null).then(() => (alert("true")));
+    addFriend() {
+      storage.addFriend(storage.getAccessToken(), this.userName).then(function(result){
+      if(result){
+          alert("added");
+      }
+      else{
+        alert("user not added");
+      }
+      })
+       
     },
     getFriends() {
       storage.getFriends(null).then(x => (this.state.friends = x));
     },
+    removeFriend() {
+      //do nothing yet
+    },
+    refresh(){
+      this.getFriends();
+    },
     accessToken: () => storage.getAccessToken()
+  
+  },
+  created() {
+    //loopTimer = setInterval(this.refresh, 5000);
   }
 };
 </script>

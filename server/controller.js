@@ -69,14 +69,14 @@ app.post('/addfriend', function(req, res) {
 
     var username = req.get('userID');
     var name = req.get('name');
-    var friendID = req.get('friendID');
+    //var friendID = req.get('friendID');
 
     var index = users.findUser(username);
         if(index == null){
             res.send("user cannot be found"); 
         }
         else{
-            if(users.addfriend(index, name, friendID)){
+            if(users.addfriend(index, name, null)){
                 res.send(true);
             }
             else{
