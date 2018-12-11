@@ -65,7 +65,10 @@ export default {
   },
   methods: {
     getResults(){
-        recipelookup.fetchData(this.criteria).then(x => this.foods = x);
+       recipelookup.fetchData(this.criteria).then(function(response){
+         this.foods = response.data.hits;
+       });
+        
   }
   }
  

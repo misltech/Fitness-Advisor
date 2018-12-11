@@ -62,10 +62,10 @@ export default {
   methods: {
     sendExercise: function(){
       if(this.typeofExercise == "Walking"){
-        storage.addWalking(storage.accesstoken, this.distance);
+        storage.addWalking(storage.getAccessToken(), this.distance);
       }
       else if(this.typeofExercise == "Running"){
-        storage.addRunning(storage.accesstoken, this.distance);
+        storage.addRunning(storage.getAccessToken(), this.distance);
       }
     }
 

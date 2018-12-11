@@ -10,7 +10,7 @@
       <li class="nav-item">
         <router-link class="nav-link" exact-active-class="active" to="/nutrition">Nutrition</router-link>
       </li>
-      <li v-show="loginStatus()" class="nav-item dropdown">
+      <li  class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hi, {{name}}</a>
         <div class="dropdown-menu">
           <router-link class="dropdown-item"  to="/profile">My Profile</router-link>
@@ -31,25 +31,23 @@ import * as fb from '@/services/facebook';
 export default {
   data(){
     return{
-      name: ""
+      name: "",
+      loggedin: false
     }
   },
+  computed: {  //computed is to check an condition using v-if
 
-  methods: {
-    loginStatus: function(){
-      fb.getStatus().then(function(resolve, reject){
-        console.log("this is success " + resolve);
-        console.log("this is reject " + reject);
-        alert(resolve);
+    loginStatus(){
+      return this.getStatus;
+    }
+  
+  },
+  created: function(){
+    fb.getName().then(function(res){this.name = res});
+ },
 
-        if(resolve == true){
-          return true;
-        }
-        else if(reject == true){
-          return false;
-        }
-      })
-    },
+  methods: { //method is to update data
+  
     logOut: function(){
       fb.logmeout().then(this.$router.push('/'));
     },
@@ -62,8 +60,21 @@ export default {
         }
       })
       
-    }
-
-    } 
+    },
+    getStatus: function(){
+      fb.getStatus().then(function(resolve, reject){
+        //console.log("this is success " + resolve);
+        //console.log("this is reject " + reject);
+        //alert(resolve);
+        if(resolve){
+          this.name = resolve;
+          return true;
+        }
+        else if(reject){
+          return false;
+        }
+      });
   }
+  }
+}
 </script>

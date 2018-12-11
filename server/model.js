@@ -35,7 +35,7 @@ class User {
 
     findUser(userID){
         for(let u = 0; u < this.users.length; u++){
-            if(user[u].userID = userID){
+            if(this.users[u].userID == userID){
                 return u;
             }
         }

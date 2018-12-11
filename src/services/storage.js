@@ -39,14 +39,18 @@ function myFetch(url, method, data) {
             headers: {
                 data
             }
+        }).then(res =>{
+            return res;
         })
     }
-    else {
+    else if(method == "POST"){
 
         axios.post(url, {
             headers: {
                 data
             }
+        }).then(res => {
+            return res;
         })
     }
 

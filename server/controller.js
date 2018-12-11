@@ -8,12 +8,12 @@ const app = express.Router();
 app.get('/getuser', function(req, res) {
     var userID = req.get('userID');
    
-        index = users.findUser(userID);
+        var index = users.findUser(userID);
         if(index == null){
             res.send("user cannot be found"); 
         }
         else{
-            res.send(user[index]);
+            res.send(users[index]);
         }
   });
 
@@ -28,7 +28,7 @@ app.get('/getuser', function(req, res) {
     var userID = req.get('userID');
     var accesstoken = req.get('accesstoken');
     //name, age, location, userID, accesstoken
-    console.log(username, age, location, userID, accesstoken);
+    //console.log(username, age, location, userID, accesstoken);
     if(users.createUser(username, age, location, userID, accesstoken)){
         res.send(true);
     }
@@ -41,12 +41,12 @@ app.get('/getuser', function(req, res) {
 app.post('/addWalking', function(req, res) {
     var username = req.get('userID');
     var data = req.get('distance');
-        index = users.findUser(username);
+        var index = users.findUser(username);
         if(index == null){
             res.send("user cannot be found"); 
         }
         else{
-            user.addWalkingDistance(index, data);
+            users.addWalkingDistance(index, data);
             res.send(true);
         }
 });
@@ -55,12 +55,12 @@ app.post('/addRunning', function(req, res) {
 
     var username = req.get('userID');
     var data = req.get('distance');
-        index = users.findUser(username);
+        var index = users.findUser(username);
         if(index == null){
             res.send("user cannot be found"); 
         }
         else{
-            user.addRunningDistance(index, data);
+            users.addRunningDistance(index, data);
             res.send(true);
         }
 });
@@ -71,12 +71,12 @@ app.post('/addfriend', function(req, res) {
     var name = req.get('name');
     var friendID = req.get('friendID');
 
-    index = users.findUser(username);
+    var index = users.findUser(username);
         if(index == null){
             res.send("user cannot be found"); 
         }
         else{
-            if(user.addfriend(index, name, friendID)){
+            if(users.addfriend(index, name, friendID)){
                 res.send(true);
             }
             else{
@@ -87,7 +87,7 @@ app.post('/addfriend', function(req, res) {
 
 app.get('/getfriends', function(req, res) {
     var username = req.get('userID');
-    index = users.findUser(username);
+    var index = users.findUser(username);
     res.send(users.users[index]);
 });
 
