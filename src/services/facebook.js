@@ -1,5 +1,6 @@
 import * as storage from '@/services/storage';
 
+
 window.fbAsyncInit = function () {
   FB.init({
     appId: '191023585134452',
@@ -41,8 +42,12 @@ function statusChangeCallback(response) {
     FB.api('/me', function (res) {
       console.log(res.name);
       //currentUser = res;
-      storage.login(res.name, null, null, response.authResponse.userID, response.authResponse.accessToken);
-      storage.setAccessToken(response.authResponse.accessToken);
+        storage.login(res.name, null, null, response.authResponse.userID, response.authResponse.accessToken).then(function(response){
+        console.log(response);
+          console.log("attempt to create user ..done");
+        //storage.setUserID(response.authResponse.userID);
+        //storage.setAccessToken(response.authResponse.accessToken);
+      });
 
     });
     //authResponse.userID
@@ -50,6 +55,8 @@ function statusChangeCallback(response) {
     // The person is not logged into your app or we are unable to tell.
     //document.getElementById('status').innerHTML = 'Please log ' +
     //do something not sure what yet
+   // alert("please log in");
+    //this.$router.push("/");
   }
 }
 export function logmeout() {
@@ -76,23 +83,34 @@ export function getStatus(){
 
 
 export function getLocation() {
-  FB.api('/me', { fields: 'location' }, function (response) {
-    return response.location;
-  });
+    // eslint-disable-next-line
+  return new Promise(function(resolve, reject){
+    FB.api('/me', { fields: 'location' }, function (response) {
+      resolve(response.location);
+    });
+  })
+  
 }
 
 export function getAge() {
-  FB.api('/me', { fields: 'age_range' }, function (response) {
-    console.log(response);
-    return response;
+  // eslint-disable-next-line
+  return new Promise(function(resolve, reject){
+    FB.api('/me', { fields: 'age_range' }, function (response) {
+      console.log(response);
+      resolve (response);
+  });
+  
   });
 }
 
 export function getProfilePicture() {
+  // eslint-disable-next-line
+  return new Promise(function(resolve, reject){
   FB.api('/me', { fields: 'profile_pic' }, function (response) {
     console.log(response);
-    return response;
+    resolve(response);
   });
+});
 }
 export function getName() {
   return new Promise(function(resolve, reject){

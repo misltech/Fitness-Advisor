@@ -27,7 +27,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="textinput">Distance</label>
           <div class="col-md-4">
-            <input
+            <input v-model = "distance"
               id="textinput"
               name="textinput"
               type="text"
@@ -62,10 +62,10 @@ export default {
   methods: {
     sendExercise: function(){
       if(this.typeofExercise == "Walking"){
-        storage.addWalking(storage.getAccessToken(), this.distance);
+        storage.addWalking(storage.getUserID(), this.distance);
       }
       else if(this.typeofExercise == "Running"){
-        storage.addRunning(storage.getAccessToken(), this.distance);
+        storage.addRunning(storage.getUserID(), this.distance);
       }
     }
 

@@ -6,30 +6,30 @@ var users = new User();
 const app = express.Router();
 
 app.get('/getuser', function(req, res) {
-    var userID = req.get('userID');
-   
-        var index = users.findUser(userID);
+    let userID = req.get('userID');
+    let index = users.findUser(userID);
         if(index == null){
             res.send("user cannot be found"); 
         }
         else{
-            res.send(users[index]);
+            res.send(users.getUser(index));
         }
   });
 
   app.get('/allusers', function(req, res) {
-        res.send(users.users);
+        res.send(users.getAllUsers());
   });
 
   app.post('/createUser', function(req, res) {
-    var username = req.get('name');
-    var age = req.get('age');
-    var location = req.get('location');
-    var userID = req.get('userID');
-    var accesstoken = req.get('accesstoken');
+    let username = req.get('name');
+    let age = req.get('age');
+    let location = req.get('location');
+    let userID = req.get('userID');
+    let accesstoken = req.get('accesstoken');
     //name, age, location, userID, accesstoken
     //console.log(username, age, location, userID, accesstoken);
-    if(users.createUser(username, age, location, userID, accesstoken)){
+    let r = users.createUser(username, age, location, userID, accesstoken);
+    if(r){
         res.send(true);
     }
     else{
@@ -39,44 +39,46 @@ app.get('/getuser', function(req, res) {
 });
 
 app.post('/addWalking', function(req, res) {
-    var username = req.get('userID');
-    var data = req.get('distance');
-        var index = users.findUser(username);
+    let userID = req.get('userID');
+    let data = req.get('distance');
+    let index = users.findUser(userID);
+
         if(index == null){
             res.send("user cannot be found"); 
         }
         else{
-            users.addWalkingDistance(index, data);
+           if(users.addWalkingDistance(index, data))
             res.send(true);
         }
 });
 
 app.post('/addRunning', function(req, res) {
 
-    var username = req.get('userID');
-    var data = req.get('distance');
-        var index = users.findUser(username);
+    let userID = req.get('userID');
+    let data = req.get('distance');
+    let index = users.findUser(userID);
+
         if(index == null){
             res.send("user cannot be found"); 
         }
         else{
-            users.addRunningDistance(index, data);
+           if(users.addRunningDistance(index, data))
             res.send(true);
         }
 });
 
 app.post('/addfriend', function(req, res) {
 
-    var username = req.get('userID');
-    var name = req.get('name');
+    let userID = req.get('userID');
+    let name = req.get('name');
     //var friendID = req.get('friendID');
+    let index = users.findUser(userID);
 
-    var index = users.findUser(username);
         if(index == null){
             res.send("user cannot be found"); 
         }
         else{
-            if(users.addfriend(index, name, null)){
+            if(users.addFriend(index, name, null)){
                 res.send(true);
             }
             else{
@@ -86,21 +88,10 @@ app.post('/addfriend', function(req, res) {
 });
 
 app.get('/getfriends', function(req, res) {
-    var username = req.get('userID');
-    var index = users.findUser(username);
-    res.send(users.users[index]);
+    let userID = req.get('userID');
+    let index = users.findUser(userID);
+    res.send(users.getUser(index).friends);
 });
 
-
 module.exports = app;
-
-
-
-
-
-
-
-
-
-
-  //future ref: https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters
+//future ref: https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters

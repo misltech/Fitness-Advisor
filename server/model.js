@@ -3,14 +3,13 @@ class User {
      
      
     constructor(){
-       this.users = [];
+       this.FitnessAdvisorUser = [];
     }
 
     createUser(name, age, location, userID, accesstoken){
         if(this.findUser(userID) == null){
-        let single_user = {"name": name, "age": age,"location": location, "userID": userID, "accesstoken": accesstoken, "friends": [{"Name": null, "FacebookID": null}], "ExerciseData": [{"Walking_Distance": null, "Running_Distance": null}]};
-        this.users.push(single_user);
-
+        var single_user = {"name": name, "age": age,"location": location, "userID": userID, "accesstoken": accesstoken, "friends": [], "ExerciseData": {"Walking_Distance": null, "Running_Distance": null}};
+        this.FitnessAdvisorUser.push(single_user);
         return true;
         }
         else{
@@ -19,23 +18,27 @@ class User {
     }
 
     getAllUsers(){
-        return this.users;
+        return this.FitnessAdvisorUser;
     }
 
+    getUser(index){
+        return this.FitnessAdvisorUser[index];
+    }
+    
     setName(index, newName){
-        this.user[index].name = newName;
+        this.FitnessAdvisorUser[index].name = newName;
     }
     setAge(index, newAge){
-        this.user[index].age = newAge;
+        this.FitnessAdvisorUser[index].age = newAge;
     }
     
     getAge(index){
-        return this.user[index].age;
+        return this.FitnessAdvisorUser[index].age;
     }
 
     findUser(userID){
-        for(let u = 0; u < this.users.length; u++){
-            if(this.users[u].userID == userID){
+        for(let u = 0; u < this.FitnessAdvisorUser.length; u++){
+            if(this.FitnessAdvisorUser[u].userID == userID){
                 return u;
             }
         }
@@ -44,27 +47,29 @@ class User {
 
     addWalkingDistance(index, data){
         if((!index == null)){
-            this.user[index].ExerciseData.Walking_Distance += data;
+            this.FitnessAdvisorUser[index].ExerciseData.Walking_Distance += data;
+            return true;
         }
     }
     addRunningDistance(index, data){
         if((!index == null)){
-            this.user[index].ExerciseData.Running_Distance += data;
+            this.FitnessAdvisorUser[index].ExerciseData.Running_Distance += data;
+            return true;
         }  
     }
 
     addFriend(index, name, facebookid){
         if((!index == null)){
             let temp = {"Name": name, "FacebookID": facebookid}
-            this.user[index].friends.push(temp);
+            this.FitnessAdvisorUser[index].friends.push(temp);
             return true;
         }  
     }
     
     removeFriend(index, friend){
-        for(let i = 0; i < this.users[index].friends.length; i++){
-            if(this.users[index].friends[i].FacebookID == friend){
-                this.user[index].friends.splice(i, 1);
+        for(let i = 0; i < this.FitnessAdvisorUser[index].friends.length; i++){
+            if(this.FitnessAdvisorUser[index].friends[i].FacebookID == friend){
+                this.FitnessAdvisorUser[index].friends.splice(i, 1);
                 return true;
             }
         }
