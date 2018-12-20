@@ -10,7 +10,8 @@
       <li class="nav-item">
         <router-link class="nav-link" exact-active-class="active" to="/nutrition">Nutrition</router-link>
       </li>
-      <li v-show="this.getStatus()" class="nav-item dropdown">
+      <!-- v-show="this.getStatus()" -->
+      <li class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle"
           data-toggle="dropdown"

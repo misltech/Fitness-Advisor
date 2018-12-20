@@ -12,7 +12,14 @@ export function login(username, age, location, userID, accesstoken) {
     }
     return fetch(apiroot + "/createUser", "POST", { "name": username, "location": location, "age": age, "userID": userID, "accesstoken": accesstoken });
     
-}       //url, storagetype, method , data
+}
+export function reqinfo(){
+    return (apiroot, "/autocomplete");
+}
+export function autocomp(name){
+    return fetch(apiroot, "/autocomplete", "GET", {"name": name});
+}
+//url, storagetype, method , data
 export function getUserInfo(userID) {
     return fetch(apiroot + "/getuser", "GET", { "userID": userID });
 }

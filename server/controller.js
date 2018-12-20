@@ -16,9 +16,19 @@ app.get('/getuser', function(req, res) {
         }
   });
 
-  app.get('/allusers', function(req, res) {
-        res.send(users.getAllUsers());
+  app.get('/allusersdata', function(req, res) {
+        res.send(users.getAllUsersData());
   });
+
+  app.get('/allusernames', function(req, res) {
+    res.send(users.getAllUsername());
+});
+
+app.get('/autocomplete:name', function(req, res) {
+    let query = req.get('name');
+    res.send(users.autocomplete(query));
+});
+
 
   app.post('/createUser', function(req, res) {
     let username = req.get('name');

@@ -6,10 +6,11 @@
           <div class="col-md-6">
             <h3 class="text-center">Add Friends</h3>
             <hr class="my-4">
-            <form class="form-horizontal">
-              <!-- <fieldset> -->
-              <!-- Search input-->
-              <div class="form-group">
+
+            <!-- <form class="form-horizontal"> -->
+            <!-- <fieldset> -->
+            <!-- Search input-->
+            <!-- <div class="form-group">
                 <label class="col-md-6 control-label" for="searchinput">Enter a friend name:</label>
                 <div class="col-md-6">
                   <input
@@ -21,21 +22,25 @@
                     class="form-control input-md"
                   >
                 </div>
-              </div>
+            </div>-->
+            <div id="app">
+              <h3>Search for a friend</h3>
+              <v-select style="background-color:white; width: 80%;" @search:focus="maybeLoad" :options="options"></v-select>
+            </div>
 
-              <!-- Button -->
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="singlebutton"></label>
-                <div class="col-md-4">
-                  <button
-                    @click.prevent="addFriend"
-                    id="singlebutton"
-                    name="singlebutton"
-                    class="col-md-12 btn btn-success"
-                  >add</button>
-                </div>
+            <!-- Button -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="singlebutton"></label>
+              <div class="col-md-4">
+                <button
+                  @click.prevent="addFriend"
+                  id="singlebutton"
+                  name="singlebutton"
+                  class="col-md-12 btn btn-success"
+                >add</button>
               </div>
-            </form>
+            </div>
+            <!-- </form> -->
           </div>
           <div class="col-md-6">
             <h3 class="text-center">Your Friends</h3>
@@ -69,29 +74,38 @@
 
 <script>
 import * as storage from "@/services/storage";
-// eslint-disable-next-line 
+// eslint-disable-next-line
 let loopTimer = null;
 
 export default {
   data() {
     return {
       state: {
-        userName: null,
-        friends: []
+        friendname: null,
+        friends: [],
+        options: []
       }
     };
   },
   methods: {
     addFriend() {
-      storage.addFriend(storage.getAccessToken(), this.userName).then(function(result){
-      if(result){
-          alert("added");
-      }
-      else{
-        alert("user not added");
-      }
-      })
-       
+      storage
+        .addFriend(storage.getAccessToken(), this.friendname)
+        .then(function(result) {
+          if (result) {
+            alert("added");
+          } else {
+            alert("user not added");
+          }
+        });
+    },
+    maybeLoad() {
+      return this.options.length <= 0 ? this.load() : null
+    },
+    load() {
+      this.$refs.select.toggleLoading(true)
+      storage.autocomp(this.options).then(res => {this.userDatabase = res; this.$refs.select.toggleLoading(false)})
+        .catch(err => console.warn(err))
     },
     getFriends() {
       storage.getFriends(null).then(x => (this.state.friends = x));
@@ -99,11 +113,10 @@ export default {
     removeFriend() {
       //do nothing yet
     },
-    refresh(){
+    refresh() {
       this.getFriends();
     },
     accessToken: () => storage.getAccessToken()
-  
   },
   created() {
     //loopTimer = setInterval(this.refresh, 5000);

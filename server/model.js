@@ -17,8 +17,31 @@ class User {
         }
     }
 
-    getAllUsers(){
+    getAllUsersData(){
         return this.FitnessAdvisorUser;
+    }
+
+    getAllUsername(){
+        var test = ["Tahir", "Alyssa", "Sergio", "Moshe", "Tahirah"]; //will make up a test array so that user have something to work with
+        var name = [];
+        for(let i = 0; i < this.FitnessAdvisorUser.length; i++){  //for loop will simulate if it actually was in the database
+            name.push(this.FitnessAdvisorUser[i].name);
+        }
+        //return name; //if this was actually to be done
+        //test case 
+        return test;
+    }
+
+    autocomplete(letters){
+        var test = ["Tahir", "Alyssa", "Sergio", "Moshe", "Tahirah"]; //will make up a test array so that user have something to work with
+        var name = [];
+            //this.FitnessAdvisorUser.length *this should replace test*
+        for(let i = 0; i < test.length; i++){  //for loop will simulate if it actually was in the database 
+           // this.FitnessAdvisorUser[i].name *this should replace test*
+            if(test[i].contains(letters))
+            name.push(this.test[i]);
+        }
+        return test;
     }
 
     getUser(index){
