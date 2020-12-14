@@ -1,6 +1,5 @@
 <template>
-  <div class="home">
-    <div class="jumbotron">
+    <div class="">
       <h3 class>Daily Exercise Checkin!</h3>
       <hr class="my-4">
       <form class="form-horizontal">
@@ -46,7 +45,6 @@
         </div>
       </form>
     </div>
-  </div>
 </template>
 
 <script>

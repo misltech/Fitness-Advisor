@@ -1,6 +1,5 @@
 <template>
-  <div class="home">
-    <div class="jumbotron">
+  <div>
       <form class="form-horizontal">
         <!-- <fieldset> -->
         <!-- Search input-->
@@ -44,10 +43,6 @@
         </div>
       </div>
 
-    </div>
-
-    
-      
     </div>
 
 </template>

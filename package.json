@@ -1,59 +1,64 @@
 {
-  "name": "fall2018_exerciseapp",
-  "version": "1.0.0",
-  "description": "First page",
-  "main": "index.js",
-  "dependencies": {
-    "axios": "^0.18.0",
-    "body-parser": "^1.18.3",
-    "bootstrap": "^4.1.3",
-    "express": "^4.16.4",
-    "jquery": "^3.3.1",
-    "popper.js": "^1.14.4",
-    "vue": "^2.5.17",
-    "vue-router": "^3.0.1",
-    "vue-select": "^2.5.1"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.1",
-    "@vue/cli-plugin-eslint": "^3.0.1",
-    "@vue/cli-service": "^3.0.1",
-    "vue-template-compiler": "^2.5.17"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
+    "name": "fall2018_exerciseapp",
+    "version": "1.0.0",
+    "description": "First page",
+    "author": "",
+    "scripts": {
+        "serve": "vue-cli-service serve --https true",
+        "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint",
+        "backend": "node server/index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {
-      "no-console": 0
+    "main": "index.js",
+    "dependencies": {
+        "axios": "^0.18.1",
+        "body-parser": "^1.18.3",
+        "bootstrap": "^4.5.3",
+        "bootstrap-vue": "^2.20.1",
+        "core-js": "^3.6.5",
+        "express": "^4.16.4",
+        "jquery": "^3.5.1",
+        "popper.js": "^1.14.4",
+        "vue": "^2.5.17",
+        "vue-router": "^3.0.1",
+        "vue-select": "^2.5.1"
     },
-    "parserOptions": {
-      "parser": "babel-eslint"
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "^4.5.9",
+        "@vue/cli-plugin-eslint": "^4.5.9",
+        "@vue/cli-service": "^4.5.9",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^6.7.2",
+        "eslint-plugin-vue": "^6.2.2",
+        "vue-template-compiler": "^2.5.17"
     },
-    "globals": {
-      "FB": false
+    "eslintConfig": {
+        "root": true,
+        "env": {
+            "node": true
+        },
+        "extends": [
+            "plugin:vue/essential",
+            "eslint:recommended"
+        ],
+        "rules": {
+            "no-console": 0
+        },
+        "parserOptions": {
+            "parser": "babel-eslint"
+        },
+        "globals": {
+            "FB": false
+        }
+    },
+    "bugs": {
+        "url": "https://github.com/misltech/fall2018_excersizeapp/issues"
+    },
+    "homepage": "https://github.com/misltech/fall2018_excersizeapp#readme",
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/misltech/fall2018_excersizeapp.git"
     }
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/index.js",
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/misltech/fall2018_excersizeapp.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/misltech/fall2018_excersizeapp/issues"
-  },
-  "homepage": "https://github.com/misltech/fall2018_excersizeapp#readme"
 }

@@ -4,14 +4,13 @@
       <li class="nav-item">
         <router-link class="nav-link" exact-active-class="active" to="/">Home</router-link>
       </li>
-      <li class="nav-item">
+      <li v-show="loggedin" class="nav-item">
         <router-link class="nav-link" exact-active-class="active" to="/exercise">Exercise</router-link>
       </li>
-      <li class="nav-item">
+      <li v-show="loggedin" class="nav-item">
         <router-link class="nav-link" exact-active-class="active" to="/nutrition">Nutrition</router-link>
       </li>
-      <!-- v-show="this.getStatus()" -->
-      <li class="nav-item dropdown">
+      <li v-show="loggedin" class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle"
           data-toggle="dropdown"
@@ -23,7 +22,7 @@
         <div class="dropdown-menu">
           <router-link class="dropdown-item" to="/profile">My Profile</router-link>
           <router-link class="dropdown-item" to="/friends">My Friends</router-link>
-          <a style="cursor: pointer" class="dropdown-item" v-on:click="this.logOut()">Sign out</a>
+          <a style="cursor: pointer" class="dropdown-item" @click="logOut()">Sign out</a>
         </div>
       </li>
     </ul>

@@ -1,6 +1,4 @@
 <template>
-  <div class="home">
-    <div class="jumbotron">
       <div class="row">
         <div class="col-md-6">
           <h4 class="">Change Name</h4>
@@ -58,6 +56,4 @@
           </form>
         </div>
       </div>
-    </div>
-  </div>
 </template>

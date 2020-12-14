@@ -5,7 +5,12 @@
       Fitness Advisor
     </div>
     <Nav />
-    <router-view/>
+    
+    <Body>
+
+      <router-view />
+    </Body>
+    
   </div>
 </template>
 
@@ -16,17 +21,16 @@
 </style>
 
 <script>
-// global.jQuery = require('jquery');
-// var $ = global.jQuery;
-// widows.$ = $;
-
 import Nav from '@/components/Navigation.vue';
+import Body from '@/components/BodySkeleton.vue';
 import '@/services/facebook';
 import "../node_modules/bootstrap/dist/js/bootstrap.js";
+
 export default {
   name: 'home',
   components: {
-    Nav
+    Nav,
+    Body
   }
 }
 </script>

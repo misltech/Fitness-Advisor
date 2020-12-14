@@ -1,7 +1,6 @@
 
 <template>
-  <div class="home">
-    <div class="jumbotron">
+      <div>
       <h1 class="display-4">Welcome to my fitness advisor!</h1>
       <p
         class="lead"
@@ -9,14 +8,14 @@
       <hr class="my-4">
       
       <p style="font-size: 17px;">Log in to facebook to sign up!</p>
-      <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
-    </div>
-  </div>
+      <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false">
+
+      </div>
+      </div>
 </template>
  
  <script>
-//import * as fb from "@/services/facebook";
-//fb.getScopes()
+
 export default {
   data(){
       return {
